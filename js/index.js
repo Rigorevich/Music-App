@@ -172,6 +172,7 @@ const updateTime = () => {
 }
 
 const init = async () => {
+    if (!localStorage.getItem('volume')) localStorage.setItem('volume', '1');
     audio.volume = Number(localStorage.getItem('volume'));
     playerVolumeInput.value = audio.volume * 100;
 
@@ -219,7 +220,7 @@ const init = async () => {
     playerVolumeInput.addEventListener('input', () => {
         const value = playerVolumeInput.value;
         audio.volume = value / 100;
-
+        localStorage.setItem('volume', audio.volume);
     });
     muteBtn.addEventListener('click', () => {
         if (audio.volume) {
