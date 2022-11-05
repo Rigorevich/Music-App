@@ -1,0 +1,92 @@
+.track {
+    padding: 6px;
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.track_active {
+    border-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: background-color .3s ease-in-out;
+
+}
+
+.track__img-wrap {
+    position: relative;
+    border-radius: 12px 12px 0 0;
+    line-height: 0;
+    overflow: hidden;
+}
+
+.track__img-wrap:after {
+    content: '';
+    position: absolute;
+    display: block;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateY(90deg);
+    background-image: url("../img/play.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition-property: transform, opacity;
+    transition-duration: .3s;
+    transition-timing-function: ease-in-out;
+}
+
+.track__info {
+    background-color: #ffffff;
+    border-radius: 0 0 12px 12px;
+    padding: 14px 8px;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.track:hover .track__img-wrap:after,
+.track:focus .track__img-wrap:after {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotateY(0deg);
+}
+
+.track:active .track__img-wrap:after {
+    transform: translate(-50%, -50%) rotateY(0deg) scale(1.2);
+    opacity: 1;
+}
+
+.track_active:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.track_active .track__img-wrap:after {
+    transform: translate(-50%, -50%) rotateY(0deg);
+    background-image: url("../img/pause.svg");
+    transition-property: background-color;
+    opacity: 1;
+}
+
+.track_pause .track__img-wrap:after {
+    background-image: url("../img/play.svg");
+}
+
+.track_active:hover .track__img-wrap:after {
+    background-color: #ffffff;
+}
+
+@media (max-width: 560px) {
+    .track {
+        padding: 3px;
+        border-width: 1px;
+        border-radius: 14px;
+    }
+
+    .track__info {
+        padding: 8px;
+    }
+}
