@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3024/';
+const API_URL = 'https://music-app-server-ea1r.onrender.com/';
 
 const dataMusic = [
 
