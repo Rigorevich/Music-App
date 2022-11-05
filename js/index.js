@@ -8,10 +8,13 @@ let playlist = [];
 
 const audio = new Audio();
 
+
 const favoriteList = localStorage.getItem('favorite') ? JSON.parse(localStorage.getItem('favorite')) : [];
 const favoriteBtn = document.querySelector('.header__favorite-btn');
 const headerLogo = document.querySelector('.header__logo');
 const pauseBtn = document.querySelector('.player__controller-pause');
+const trackArtist = document.querySelector('.track-info__artist');
+const trackName = document.querySelector('.track-info__title')
 const stopBtn = document.querySelector('.player__controller-stop');
 const prevBtn = document.querySelector('.player__controller-prev');
 const nextBtn = document.querySelector('.player__controller-next');
@@ -78,6 +81,8 @@ const playMusic = (event) => {
 
     pauseBtn.classList.remove('player__icon_play');
     player.classList.add('player_active');
+    trackName.textContent = `${playlist.find((item) => item.id === id).track}`;
+    trackArtist.textContent = `${playlist.find((item) => item.id === id).artist}`;
 
     const prevTrack = i === 0 ? playlist.length - 1 : i - 1;
     const nextTrack = (i + 1) === playlist.length ? 0 : i + 1;
